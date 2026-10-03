@@ -1,0 +1,137 @@
+{
+  "type": "DOM integration, not browser rendering",
+  "started_at": "2026-10-03T17:55:02.489Z",
+  "checks": [
+    {
+      "name": "English-only interface and left-to-right document",
+      "status": "passed"
+    },
+    {
+      "name": "Superadmin login and navigation",
+      "status": "passed"
+    },
+    {
+      "name": "Workspace selector and isolation",
+      "status": "passed"
+    },
+    {
+      "name": "Late response cannot overwrite the newly selected workspace",
+      "status": "passed"
+    },
+    {
+      "name": "Render inbox",
+      "status": "passed"
+    },
+    {
+      "name": "Render events",
+      "status": "passed"
+    },
+    {
+      "name": "Render tasks",
+      "status": "passed"
+    },
+    {
+      "name": "Render exports",
+      "status": "passed"
+    },
+    {
+      "name": "Render texts",
+      "status": "passed"
+    },
+    {
+      "name": "Render raise",
+      "status": "passed"
+    },
+    {
+      "name": "Render campaigns",
+      "status": "passed"
+    },
+    {
+      "name": "Render routes",
+      "status": "passed"
+    },
+    {
+      "name": "Render team",
+      "status": "passed"
+    },
+    {
+      "name": "Render audit",
+      "status": "passed"
+    },
+    {
+      "name": "Render deliveries",
+      "status": "passed"
+    },
+    {
+      "name": "Render operations",
+      "status": "passed"
+    },
+    {
+      "name": "Internal note and HTML escaping",
+      "status": "passed"
+    },
+    {
+      "name": "Project editing via shared permission service",
+      "status": "passed"
+    },
+    {
+      "name": "Conditional raise edit clears inapplicable fields",
+      "status": "passed"
+    },
+    {
+      "name": "Program create and detail",
+      "status": "passed"
+    },
+    {
+      "name": "Program archive and restore confirmation",
+      "status": "passed"
+    },
+    {
+      "name": "Task create and assignee",
+      "status": "passed"
+    },
+    {
+      "name": "Authenticated XLSX download",
+      "status": "passed"
+    },
+    {
+      "name": "Project archive preserves source tags and disables editing",
+      "status": "passed"
+    },
+    {
+      "name": "Individual code access revoke and reactivate",
+      "status": "passed"
+    },
+    {
+      "name": "Superadmin bot-text edit",
+      "status": "passed"
+    },
+    {
+      "name": "Health and safe repair UI",
+      "status": "passed"
+    },
+    {
+      "name": "Connection failure exposes native fallback and recovery",
+      "status": "passed"
+    },
+    {
+      "name": "Admin does not receive superadmin controls",
+      "status": "passed"
+    },
+    {
+      "name": "Second superadmin has full controls",
+      "status": "passed"
+    },
+    {
+      "name": "English Telegram simulator boots and Start opens the guest home",
+      "status": "passed"
+    },
+    {
+      "name": "Telegram simulator opens native admin controls",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "status": "passed",
+  "finished_at": "2026-10-03T17:55:09.005Z"
+}

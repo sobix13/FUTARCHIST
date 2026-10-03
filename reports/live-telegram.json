@@ -1,0 +1,54 @@
+{
+  "timestamp_utc": "2026-10-03T16:20:29.751063+00:00",
+  "status": "passed",
+  "kind": "Live Telegram Bot API identity and metadata check",
+  "human_client_flows": "not_run",
+  "id": 8911627546,
+  "username": "FutarchistBot",
+  "name": "FUTARCHIST",
+  "privacy_enabled": true,
+  "can_join_groups": true,
+  "webhook_present": false,
+  "pending_updates": 0,
+  "commands": [
+    "start",
+    "activate",
+    "projects",
+    "resume",
+    "support",
+    "id",
+    "stop"
+  ],
+  "command_descriptions": {
+    "start": "Start and enter your access code",
+    "activate": "Activate your contact's access code",
+    "projects": "My projects and updates",
+    "resume": "Resume a saved form",
+    "support": "Support",
+    "id": "Telegram ID",
+    "stop": "Stop DM invitations"
+  },
+  "configured_superadmins": [
+    313342234,
+    5691137098
+  ],
+  "command_menu_language": "en",
+  "scope_menus": {
+    "313342234": "configure_after_first_start",
+    "5691137098": "configure_after_first_start"
+  },
+  "worker_smoke": {
+    "seconds": 32,
+    "components": {
+      "database": "ok",
+      "references": "ok",
+      "inbox": "ok",
+      "maintenance": "ok",
+      "outbox": "ok",
+      "poller": "ok"
+    },
+    "received_updates": 0,
+    "delivered_messages": 0,
+    "status": "passed"
+  }
+}

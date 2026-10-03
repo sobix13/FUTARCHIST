@@ -1,0 +1,14 @@
+1. Core and independent access rules: 59 tests, PASSED
+Update processing failed; update_id=1
+2. Native Telegram, HTTP, exports, lifecycle and English migration: 193 tests, PASSED
+Update processing failed; update_id=1
+3. Full regression, concurrency, isolation and backup: 268 tests, PASSED
+Python compile: PASSED
+JavaScript syntax: ownership/static/app.js: PASSED
+JavaScript syntax: ownership/static/operations.js: PASSED
+JavaScript syntax: ownership/static/emulator.js: PASSED
+JavaScript syntax: tests/dom-check.mjs: PASSED
+JavaScript syntax: tests/ui-check.mjs: PASSED
+Pure JavaScript data helpers: PASSED
+DOM integration with real local HTTP: PASSED
+Backend: passed. Unique tests: 268. DOM: passed. Real-client acceptance remains pending.
