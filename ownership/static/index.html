@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#17343a">
+<title>FUTARCHIST | Teams, projects and programs</title>
+<link rel="stylesheet" href="/style.css">
+<script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+<script src="/operations.js" defer></script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<div id="connection" class="connection" role="status" hidden>Dashboard connection lost. <button data-action="refresh">Try again</button><a id="native-link" href="https://t.me/FutarchistBot" target="_blank" rel="noopener">Manage in Telegram</a></div>
+<main id="login" class="login">
+<div class="brand-lockup"><img src="/assets/futardio.png" alt="Futardio" width="52" height="52"><div class="brand">FUTARCHIST<span>Team &amp; project management</span></div></div>
+<h1>Your projects, programs<br>and follow-ups in one workspace</h1>
+<p>Open the dashboard from the bot. For browser access, send <bdi>/panel</bdi> in Telegram and use your personal login link.</p>
+<div class="login-points"><span>Personal and team workspaces</span><span>Private access codes</span><span>Clear assignments and history</span></div>
+<div id="demo-login" hidden>
+<div class="notice">Local demo with sample data. No real messages are sent.</div>
+<div class="actions"><button data-login="1">Log in as superadmin</button><button data-login="4" class="secondary">Second superadmin</button><button data-login="2" class="secondary">Sample admin</button></div>
+<a href="/emulator">Telegram bot and management simulator</a>
+</div>
+<div class="actions"><a href="/guide" target="_blank" rel="noopener">User guide</a><a href="https://t.me/FutarchistBot" target="_blank" rel="noopener">Open bot</a></div>
+<div class="ecosystem"><img src="/assets/metadao-wordmark.jpeg" alt="MetaDAO" width="168" height="34"><span>Work management for MetaDAO and Futardio teams</span></div>
+</main>
+<div id="shell" hidden>
+<div id="demo-banner" class="demo-banner" hidden>Local demo <a href="/emulator" target="_blank" rel="noopener">Telegram simulator</a></div>
+<header class="topbar">
+<div class="brand-lockup"><img src="/assets/futardio.png" alt="Futardio" width="40" height="40"><div class="brand">FUTARCHIST<span>Teams · Projects · Programs</span></div></div>
+<label class="workspace-label">Workspace<select id="workspace" aria-label="Select workspace"></select></label>
+<div class="user"><span id="user-name"></span><button id="logout" class="quiet">Log out</button></div>
+</header>
+<div class="layout"><nav id="nav" aria-label="Dashboard sections"></nav><main class="content"><div id="page-head" class="page-head"></div><section id="view" aria-live="polite"></section></main></div>
+</div>
+<dialog id="detail" class="detail" aria-label="Details and actions"><div id="detail-content"></div></dialog>
+<footer class="footer"><div class="credit"><img src="/assets/ownership.jpeg" alt="Ownership" width="26" height="26"><span>Built by Ownership</span></div><div><a href="https://t.me/sobix13" target="_blank" rel="noopener">Sobix</a><span> / </span><a href="https://t.me/SrMessiSOL" target="_blank" rel="noopener">SrMessi</a></div><img src="/assets/metadao.png" alt="MetaDAO" width="28" height="28"></footer>
+</body>
+</html>

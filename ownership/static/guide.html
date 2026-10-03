@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FUTARCHIST | Complete user guide</title><link rel="stylesheet" href="/style.css"></head><body>
+<main class="guide">
+<div class="brand-lockup"><img src="/assets/futardio.png" alt="Futardio" width="50" height="50"><div class="brand">FUTARCHIST<span>User and deployment guide · Version 2.1</span></div></div>
+<h1>Keep information and work in the right workspace</h1>
+<p>FUTARCHIST collects project information and fundraising details, manages contact with representatives, and organizes internal teams, programs and follow-ups. It serves individual admins, agencies, hosts and management teams. Its scope extends beyond radio guests.</p>
+<p>English is the only interface language. The bot, forms, admin panels, errors and documentation use English. There is no language selector. People enter their own information. Filters use explicit criteria, and invitations require a preview and confirmation. No AI services are used.</p>
+<div class="notice">Test bot: <a href="https://t.me/FutarchistBot">@FutarchistBot</a> · Product: FUTARCHIST. Install the package on your VPS for permanent operation. Set your own HTTPS origin for the web dashboard.</div>
+<div class="card"><h2>Choose a section</h2><div class="actions"><a href="#guest">Submit information</a><a href="#admins">Admins and teams</a><a href="#codes">Access codes</a><a href="#projects">Cases</a><a href="#filters">Filters</a><a href="#programs">Programs</a><a href="#tasks">Tasks</a><a href="#invites">Invitations and groups</a><a href="#exports">Exports</a><a href="#texts">Bot text</a><a href="#health">Health and recovery</a><a href="#browser">Web dashboard</a><a href="#deploy">Deployment</a><a href="#acceptance">Acceptance tests</a></div></div>
+
+<section id="guest"><h2>1. Submit information as a project representative</h2>
+<ol><li>Start the bot. Enter the access code supplied by your contact, or open their private intake link. The alternative command is <code>/activate CODE</code>.</li><li>Review the destination workspace and intake route. Agree to continue.</li><li>If the route supports both branches, choose General information, Raise review or Both.</li><li>Use the buttons and short text replies. Skip optional questions when needed. Review your answers before submitting.</li><li>Press Submit. Consent to receive future DM invitations is a separate choice.</li></ol>
+<p>Use <code>/resume</code> to continue a draft, <code>/back</code> to return to the previous question, and <code>/cancel</code> to discard the draft. Discarding a draft leaves submitted cases unchanged. Save and leave retains your answers.</p>
+<p><code>/projects</code> lists your submissions. Editing requires an active code and route for the same workspace. If someone updated the case while you were editing, reopen it before saving.</p>
+<p><code>/stop</code> stops DM invitations. Replies to case-related questions remain available independently. <code>/support</code> opens the two support contacts.</p>
+<h3>General questions</h3><p>The seven questions cover project name, areas, reason for building, product stage, network environment, product/demo URL and social links or team contacts. Name, areas, stage and environment are required. Motivation, URL and socials are optional.</p>
+<p>Product stage includes Idea, Building, Beta and Live product. Devnet, Testnet and Mainnet are separate network environments. A beta product might run on Mainnet.</p>
+<h3>Raise questions</h3><p>Questions cover the current or most recent raise, platform, currency, target, amount received and consideration of MetaDAO. A retry plan is requested for unsuccessful or partially funded raises. Amount questions depend on raise status and currency. Zero means nothing received. A skipped answer means unknown.</p>
+<p>No current plan does not require a platform or amounts. Choose OTHER for currencies outside the list, then enter a code such as GBP. The form records the latest/current raise, not separate historical rounds.</p></section>
+
+<section id="admins"><h2>2. Superadmins, personal workspaces and teams</h2>
+<div class="table-wrap"><table><thead><tr><th>Account</th><th>Telegram ID</th><th>Role</th></tr></thead><tbody><tr><td>@sobix13</td><td><bdi>313342234</bdi></td><td>Superadmin and support</td></tr><tr><td>@SrMessiSOL</td><td><bdi>5691137098</bdi></td><td>Superadmin and support</td></tr></tbody></table></div>
+<p>Both accounts have equal authority based on numeric IDs. A username change does not change permissions. Their roles cannot be demoted or suspended through the panel.</p>
+<p>Open <code>/manage</code>. Choose Admins, then Add admin. Enter the person's numeric ID and display name. They obtain their ID with <code>/id</code>. A new admin receives a personal workspace and intake code. Their code is also available on their admin detail screen.</p>
+<p>Choose Create team to make a shared internal workspace. Select it and open Membership and permissions to add existing admins. An internal management team is different from the project team submitting a form. Guest codes never create admin memberships.</p>
+<p>Admins see only their permitted workspaces. Personal records stay separate from shared team records. Use a code belonging to the team workspace for shared intake.</p>
+<h3>Member permissions</h3><div class="table-wrap"><table><thead><tr><th>Permission</th><th>Access</th></tr></thead><tbody><tr><td>Read general</td><td>General project information, permitted programs and history</td></tr><tr><td>Edit general</td><td>General information, branch status, notes and tasks</td></tr><tr><td>Read raise</td><td>Raise details, financial filters, history, programs and tasks</td></tr><tr><td>Edit raise</td><td>Raise information and related review work</td></tr><tr><td>Send</td><td>Questions, invitations and group connections</td></tr><tr><td>Assign</td><td>Reassign work to authorized members</td></tr><tr><td>Export</td><td>Download datasets within read permissions</td></tr><tr><td>Routes</td><td>Create intake routes and access codes</td></tr></tbody></table></div>
+<p>The permission editor adds required read permissions when selecting write access. Export permission alone does not expose raise details. Saving an empty permission selection removes membership in that workspace. Permission changes and admin suspension close existing sessions.</p>
+<p>Manage workspaces lets superadmins rename, disable and reactivate spaces. Disabling keeps their data. Recovery remains available even if every workspace is disabled.</p></section>
+
+<section id="codes"><h2>3. Intake routes and private access codes</h2>
+<p>Open Access codes. Create a route with a name, form purpose and initial assignee. The creator becomes its source admin. Share either the code or its <code>?start=intake_CODE</code> link.</p>
+<p>Edit its name, activation limit, optional Telegram ID restriction and UTC expiry. An empty limit or expiry means unrestricted capacity or duration. Each activation is tied to a person. A restricted code works only for its assigned Telegram ID.</p>
+<p>Open Manage code access to revoke or restore one person's access. Rotation disables the old code and creates a fresh one while preserving cases and source history. Give the new code to people who need renewed access. Suspension, expiry, inactive assignees and workspace access are checked again before submission.</p>
+<p>The sender's code routes information into a specific workspace. It does not grant admin access. Public intake is disabled in live mode.</p></section>
+
+<section id="projects"><h2>4. Cases, assignments, notes and replies</h2>
+<p>Open Cases and select a project. General information and raise information appear separately. Each review branch records its source admin, current assignee and status: New, Under review, Follow-up, Accepted or Closed. Source tags retain the original numeric ID and name.</p>
+<p>Use Edit general information or Edit raise information to change permitted fields. The guest identity and source stay unchanged. Assignment requires its own permission and an eligible member. Concurrent edits using an outdated version are rejected.</p>
+<p>Internal notes remain private to authorized reviewers. A question to the representative is sent through the bot, with a personal reply link. The reply returns to the same case and branch. Previously delivered messages and replies are not overwritten. Add a correction note when needed.</p>
+<p>Authors with write access edit their own internal notes. Superadmins edit or delete other internal notes. Activity records who performed each operation. Read-only members receive no editing controls.</p>
+<p>Superadmins archive cases, restore them or permanently delete an archived case after confirmation. Archived cases have no editing controls. Deletion removes stored case relationships and related database content. Old backups and previously delivered Telegram messages remain outside the deletion.</p></section>
+
+<section id="filters"><h2>5. Filters and saved views</h2>
+<p>Filter by search text, areas, product stage, network, review branch and status, assignee, source admin, raise status, retry plan, MetaDAO consideration, platform, currency, target and amount received. Apply a criterion alone or combine several.</p>
+<p>Multiple selected areas match any selected area. Different filter criteria apply together. Platform matching is exact. Amount filters require a currency and never compare different currencies. Missing amounts are not treated as zero.</p>
+<p>Raise filters require raise read permission. Saved views belong to you in the selected workspace. Save, apply or delete a view. The same filters also determine invitation recipients and linked project export rows. Workspace-wide datasets retain their documented scope.</p></section>
+
+<section id="programs"><h2>6. Programs, participation and outcomes</h2>
+<p>Create a program with a title, kind, topic, timezone, time, description and status. Types include Radio, Roadshow, Podcast, Meeting, Campaign, Raise and Other. Programs record past work and upcoming plans.</p>
+<p>Link projects from the same workspace. Record participation as Planned, Invited, Confirmed, Attended or Declined. Remove a project from a program without deleting its case.</p>
+<p>Record outcomes after a program. Program entries do not automatically send invitations. Use Invitations for a separate preview and confirmation. Raise programs require the corresponding financial permissions.</p>
+<p>Superadmins archive and restore programs. This version does not sync external calendars or schedule reminders.</p></section>
+
+<section id="tasks"><h2>7. Tasks and follow-ups</h2>
+<p>Create a task with a title, branch, assignee, optional due date and optional project or program link. Status options are Open, In progress, Done and Cancelled. Links must belong to the same workspace and a compatible branch.</p>
+<p>Use explicit timezones. Task views show due dates in UTC. Changing an assignee requires assignment permission. Updating a task without changing its assignee uses the relevant write permission.</p>
+<p>Superadmins archive and restore tasks. Due dates are stored and shown. Automatic reminder delivery is separate future work.</p></section>
+
+<section id="invites"><h2>8. Invitations and group connections</h2>
+<p>Choose recipient filters in Cases, then open Invitations. Enter a topic, time and message template. Supported variables are <code>{project}</code>, <code>{topic}</code>, <code>{when}</code> and <code>{sector}</code>. Personalization uses those explicit fields.</p>
+<p>Create a preview. Review the destinations, individual messages and unavailable recipients before confirming. Each destination receives one invitation. Recipients and text are fixed at preview time. A filter change needs a fresh preview.</p>
+<p>A project needs either a verified connected group or a representative who opted into DM invitations. The bot does not start private conversations with people who have never started it. Consent and access are checked again before delivery.</p>
+<p>To connect a group, create a connection code from the case. Add the bot to that group. The code creator or project representative sends <code>/bind CODE</code> as a group admin. The single-use code expires in 10 minutes. Telegram group permissions are verified before binding.</p>
+<p>The bot does not collect regular group conversations. A project and group each have one active connection. Disconnecting stops future group invitations. A group invitation reply link belongs to the project representative.</p>
+<p>Replies are Yes, No or Later. Cancelling a campaign stops its remaining queued deliveries. It does not recall delivered messages. Check any Uncertain delivery in the destination chat before resending.</p></section>
+
+<section id="exports"><h2>9. Excel, CSV and dataset exports</h2>
+<p>Open Exports in the dashboard or use <code>/export</code> in Telegram. Select Projects, Branches and assignments, Raise, Notes and replies, Programs, Tasks, Invitations, Activity, Routes, Groups or All permitted datasets.</p>
+<p>XLSX uses separate worksheets for multiple datasets. A single CSV uses UTF-8 with a BOM. Multiple CSV datasets are delivered in one ZIP. Formula-like CSV text is escaped, and XLSX text remains literal.</p>
+<p>Read permissions control exported content. Financial data is excluded without raise access. Route codes and private login credentials are not exported. Permissions are checked again before a queued Telegram export is generated and delivered.</p>
+<p>Current case filters apply to projects and their linked records. Workspace-wide route/group metadata and unlinked programs or tasks retain their workspace scope. Use a narrower filter for large collections. The per-table limit is 100,000 rows and the generated file limit is 20 MB.</p></section>
+
+<section id="texts"><h2>10. Editable bot text and questions</h2>
+<p>Superadmins open Bot text to edit the welcome message, help, invitation template and question wording. The same controls are available in Telegram and the browser dashboard.</p>
+<p>Custom question text is used in English-only guest forms. Editing wording preserves field types, conditional questions and validation. A custom schema or question builder is future work. Invitation templates accept only the four supported variables.</p>
+<p>Concurrent edits require the current text version. Public bot name, description and English command menus are set using the deployment command <code>--configure-bot</code>.</p></section>
+
+<section id="health"><h2>11. Health, troubleshooting and bounded recovery</h2>
+<p>Superadmins use <code>/health</code> or the health page. It shows database integrity, references, disk space, worker heartbeats, delivery queues, failed updates and recorded incidents. Failed update IDs are available for review.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Next action</th></tr></thead><tbody><tr><td>Pending</td><td>Wait for the queued job. Avoid creating a duplicate.</td></tr><tr><td>Sent</td><td>The API confirmed delivery.</td></tr><tr><td>Failed</td><td>Review the error, permissions and destination.</td></tr><tr><td>Uncertain</td><td>Check the Telegram chat before resending.</td></tr><tr><td>Stale</td><td>Review worker liveness and the VPS.</td></tr></tbody></table></div>
+<p>Safe recovery and <code>/repair</code> clean expired state and requeue eligible transient group-verification failures. They do not rewrite code, damaged business records or unknown delivery outcomes.</p>
+<p>Retry a failed update only after reviewing its cause. Its failed transaction was rolled back. Acknowledge incident records superadmin review. It does not resolve the underlying problem.</p>
+<p>Create verified backup makes a consistent local database snapshot. Database files are not sent to chat. Restore requires stopped processes and a fresh destination on the VPS.</p>
+<p>Inbox, outbox and maintenance use independent workers. A failed update or file export does not stop later jobs. The suggested deployment separates bot and web processes. The browser remains available during a Telegram connection failure, and <code>/manage</code> remains available during a web failure. Shared database, disk or full network failure still requires infrastructure repair.</p></section>
+
+<section id="browser"><h2>12. Browser dashboard and Mini App</h2>
+<p><code>/manage</code> works inside Telegram. With HTTPS configured, open the panel button or request a personal browser link with <code>/panel</code>. The link is single-use and expires in 5 minutes.</p>
+<p>Mini App identity is verified on the server. Typing an ID or username into a browser never grants admin access. Use the workspace selector to switch spaces. Lists and filters follow the selected workspace.</p>
+<p>On a connection failure, use Refresh or the native Telegram fallback. If a save response did not arrive, check the current status before repeating it. A request might have been stored before the response failed.</p>
+<p>All built-in copy uses English and left-to-right layout. Dates and numbers use English formatting. User-entered records stay as entered. Upgrading from the earlier build converts recognized built-in defaults and preserves custom copy and form answers. Previously delivered messages remain part of their original history.</p></section>
+
+<section id="deploy"><h2>13. Local execution and VPS deployment</h2>
+<pre>python3 -m venv .venv
+.venv/bin/python -m futarchist --demo</pre>
+<p>Open <bdi>http://127.0.0.1:8765</bdi> and <code>/emulator</code>. Sample accounts are superadmins 1 and 4, admin 2, read-only member 3 and representatives 101 and 102. No real Telegram messages are sent.</p>
+<p>For live operation, copy <code>.env.example</code> to <code>.env</code>. Set BOT_TOKEN, OWNER_TG_ID 313342234, both SUPER_ADMIN_IDS and BOT_USERNAME FutarchistBot. When replacing the test bot, update token and username. The real token is excluded from source and deliverables.</p>
+<pre>.venv/bin/python -m futarchist --env .env --check-bot
+.venv/bin/python -m futarchist --env .env --configure-bot
+.venv/bin/python -m futarchist --env .env --mode bot
+.venv/bin/python -m futarchist --env .env --mode web --port 8765</pre>
+<p>Leave APP_URL empty for native Telegram use. For the panel, set an exact HTTPS origin with no path. HTTP stays on loopback behind nginx. Deployment files include independent systemd units, nginx configuration, a health probe and backup tools. Follow <code>extensions/DEPLOY.md</code>. VPS installation was not performed in the build environment.</p>
+<p>Schema 1 upgrades take a backup before migrating to schema 2. Keep the original superadmin ID in the new owner list. Unknown schemas are rejected. Process locks prevent duplicate polling workers for one database. This release does not support SQLite on network shares or multiple VPS hosts.</p></section>
+
+<section id="acceptance"><h2>14. Tests and release acceptance</h2>
+<p>The separate test report records backend, permissions, HTTP, Telegram-shaped simulation, DOM and real Bot API evidence. A simulator is not an official Telegram client. DOM checks do not verify visual rendering.</p>
+<pre>.venv/bin/python -m unittest discover -s tests -t . -q
+npm ci
+.venv/bin/python tools/check.py
+npm run test:dom
+npx playwright install chromium
+npm run test:ui</pre>
+<p>Before broad use, test both real superadmins, restricted codes, all three form purposes, a read-only team member, reassignment, questions/replies, opt-out, a real group, invitation confirmation, file downloads, archive/restore and code revocation mid-draft.</p>
+<p>Open the HTTPS panel in Telegram on iOS, Android and desktop and in an ordinary browser. Check English layout, 390px width, focus, dialogs, logos and file downloads. The report identifies checks blocked by the build environment. Production load, disk failure and independent security review are separate acceptance work.</p>
+<p>Later work includes importing the previous website, calendar sync, reminders, multiple raise rounds, attachments and PostgreSQL. These are listed separately in the operations package and are not active in this release.</p>
+<h3>Technical sources</h3><p><a href="https://core.telegram.org/bots/api">Telegram Bot API</a>, <a href="https://core.telegram.org/bots/faq">Bot limits</a>, <a href="https://core.telegram.org/bots/webapps">Mini Apps</a>, <a href="https://sqlite.org/wal.html">SQLite WAL</a> and <a href="https://sqlite.org/backup.html">SQLite Backup</a>. Access policies, limits and bounded recovery are app-specific decisions.</p></section>
+<hr><div class="row space-between"><div class="credit"><img src="/assets/ownership.jpeg" alt="Ownership" width="32" height="32"><strong>Built by Ownership</strong></div><img src="/assets/metadao-wordmark.jpeg" alt="MetaDAO" width="140" height="28"></div>
+<p>Support: <a href="https://t.me/sobix13">@sobix13</a> / <a href="https://t.me/SrMessiSOL">@SrMessiSOL</a></p>
+</main></body></html>
