@@ -1,0 +1,4 @@
+# FUTARCHIST 2.1 requires Python 3.12 or later.
+# The application uses Python's standard library only.
+# There are no third-party Python runtime packages to install.
+# JavaScript test dependencies are pinned in package.json and package-lock.json.

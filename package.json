@@ -1,0 +1,6 @@
+{
+  "name": "futarchist-ui-tests",
+  "private": true,
+  "scripts": { "test:ui": "node tests/ui-check.mjs", "test:dom": "node tests/dom-check.mjs" },
+  "devDependencies": { "playwright": "1.62.1", "jsdom": "30.1.1" }
+}
