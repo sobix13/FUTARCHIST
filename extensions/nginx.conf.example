@@ -1,0 +1,22 @@
+# Install certificates before enabling. Replace all example.com/path values.
+server {
+    listen 80;
+    server_name futarchist.example.com;
+    return 301 https://futarchist.example.com$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name futarchist.example.com;
+    ssl_certificate /etc/letsencrypt/live/futarchist.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/futarchist.example.com/privkey.pem;
+    client_max_body_size 64k;
+    # Do not log query strings: /?login=... contains a short-lived personal login key.
+    access_log off;
+    location / {
+        proxy_pass http://127.0.0.1:8765;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_http_version 1.1;
+        proxy_read_timeout 35s;
+    }
+}
