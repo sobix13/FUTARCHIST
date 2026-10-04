@@ -88,17 +88,19 @@ def verify_archive(destination, prefix='futarchist'):
 
 def standalone_guide():
     guide = (ROOT / 'ownership/static/guide.html').read_text()
-    css = (ROOT / 'ownership/static/style.css').read_text()
-    guide = guide.replace('<link rel="stylesheet" href="/style.css">', '<style>' + css + '</style>')
+    for name in ('style.css', 'branding.css'):
+        css = (ROOT / 'ownership/static' / name).read_text()
+        guide = guide.replace('<link rel="stylesheet" href="/' + name + '">', '<style>' + css + '</style>')
 
     def embed(match):
-        path = ROOT / 'ownership/static' / match.group(1).lstrip('/')
+        attribute, source = match.groups()
+        path = ROOT / 'ownership/static' / source.lstrip('/')
         mime = mimetypes.guess_type(path.name)[0]
         if not path.is_file() or not mime or not mime.startswith('image/'):
             raise RuntimeError('Missing guide image')
-        return 'src="data:' + mime + ';base64,' + base64.b64encode(path.read_bytes()).decode('ascii') + '"'
+        return attribute + '="data:' + mime + ';base64,' + base64.b64encode(path.read_bytes()).decode('ascii') + '"'
 
-    guide = re.sub(r'src="(/assets/[^"<>]+)"', embed, guide)
+    guide = re.sub(r'(src|href)="(/assets/[^"<>]+)"', embed, guide)
     if '/assets/' in guide or '<link rel="stylesheet"' in guide:
         raise RuntimeError('Standalone guide contains local dependencies')
     return guide
@@ -109,9 +111,11 @@ def main():
     report = json.loads((ROOT / 'reports/test-results.json').read_text())
     if report.get('backend_status') != 'passed' or report.get('dom_ui', {}).get('status') != 'passed':
         raise RuntimeError('Backend and DOM verification required before release packaging')
+    offline = standalone_guide()
+    (ROOT / 'docs/USER_GUIDE.html').write_text(offline)
     files = allowed_files()
     write_archive(OUT / ARTIFACT_NAMES[0], files, 'futarchist')
-    (OUT / ARTIFACT_NAMES[1]).write_text(standalone_guide())
+    (OUT / ARTIFACT_NAMES[1]).write_text(offline)
     shutil.copyfile(ROOT / 'reports/test-report.html', OUT / ARTIFACT_NAMES[2])
     operations = [path for path in files if path.relative_to(ROOT).parts[0] in ('docs', 'extensions')]
     operations.append(ROOT / 'README.md')

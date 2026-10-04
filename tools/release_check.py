@@ -31,7 +31,8 @@ def main():
         project = Path(directory) / 'futarchist'
         required = ('futarchist/__main__.py', 'ownership/schema.sql', 'tests/fixtures/schema-v1.sql',
                     'ownership/static/assets/metadao.png', 'ownership/static/assets/futardio.png',
-                    'ownership/static/assets/ownership.jpeg', 'ownership/static/assets/metadao-wordmark.jpeg')
+                    'ownership/static/assets/ownership.jpeg', 'ownership/static/assets/metadao-wordmark.jpeg',
+                    'ownership/static/assets/futarchist-banner.jpeg', 'ownership/static/assets/futarchist-logo.jpeg')
         for name in required:
             if not (project / name).is_file():
                 raise RuntimeError('Required source or original logo missing')
@@ -40,7 +41,7 @@ def main():
     result = json.loads(process.stdout.strip().splitlines()[-1])
     evidence = {'timestamp_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 'kind': 'Fresh extraction of the distributable, checksum verification and full Python regression',
-                'manifest_files': files, 'private_runtime_files': 'excluded', 'original_logo_files': 4,
+                'manifest_files': files, 'private_runtime_files': 'excluded', 'original_logo_files': 6,
                 'backend': result, 'status': 'passed' if process.returncode == 0 else 'failed',
                 'test_log': process.stderr}
     (ROOT / 'reports/package-check.json').write_text(json.dumps(evidence, indent=2))
@@ -60,7 +61,7 @@ def main():
         end = document.index('<!-- /package-verification -->', start) + len('<!-- /package-verification -->')
         document = document[:start] + document[end:]
     section = ('<!-- package-verification --><h2>Distributable verification</h2>'
-               '<p>The package was extracted into an empty directory. All file checksums, four original logos and '
+               '<p>The package was extracted into an empty directory. All file checksums, six original brand assets and '
                f"{result['tests']} Python tests passed. Private databases, configuration files "
                'and bot credentials are excluded.</p><!-- /package-verification -->')
     page.write_text(document.replace('</main>', section + '</main>'))
