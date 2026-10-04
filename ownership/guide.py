@@ -1,4 +1,4 @@
-"""English guidance for Telegram users. This module never changes app data."""
+"""Section guidance for Telegram users. This module never changes app data."""
 from __future__ import annotations
 
 SECTIONS = {
@@ -59,7 +59,7 @@ SECTIONS = {
     'texts': ('Bot text', 'owner',
         'Open Bot text to edit the welcome message, command help, invitation template or question wording.\n\n'
         'Question edits preserve field types, required answers and conditional logic. This screen changes wording, not the form schema. Previously delivered messages stay unchanged.\n\n'
-        'Keep built-in copy in English. Invitation templates use only {project}, {topic}, {when} and {sector}. Public name, description and Telegram command menus use the deployment command --configure-bot.'),
+        'Invitation templates use only {project}, {topic}, {when} and {sector}. Public name, description and Telegram command menus use the deployment command --configure-bot.'),
     'health': ('Health and recovery', 'owner',
         'Open Health and troubleshooting or send /health. Check database integrity, worker heartbeats, delivery queues, failed updates and incidents.\n\n'
         'Safe recovery or /repair clears expired state and retries eligible temporary failures. It does not rewrite code, repair arbitrary database corruption or resend Uncertain deliveries.\n\n'
@@ -72,7 +72,7 @@ SECTIONS = {
         'If no HTTPS address is configured, /panel opens native management. Workspace permissions apply in both interfaces. Typing an ID into a browser does not grant access.'),
     'support': ('Support and privacy', 'guest',
         'Information is stored in the workspace shown before you agree to submit. Authorized reviewers and permitted team members have access. Share only contact information you want them to use.\n\n'
-        'Ordinary group conversations are not collected. No AI services are used.\n\n'
+        'Ordinary group conversations are not collected.\n\n'
         'Send /support for @sobix13 and @SrMessiSOL. For an error, include its reference and the action you were taking. Keep private intake and browser login links private.\n\n'
         'Built by Ownership.'),
 }
