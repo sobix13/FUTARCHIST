@@ -121,10 +121,10 @@ class Handler(BaseHTTPRequestHandler):
             if not mutating and path=='/api/config': self.send_data({'demo':self.server.demo,'bot_name':self.server.service.name}); return
             if not mutating and path.startswith('/assets/'):
                 asset=path.removeprefix('/assets/')
-                allowed={'metadao-wordmark.jpeg':'image/jpeg','metadao.png':'image/png','futardio.png':'image/png','ownership.jpeg':'image/jpeg'}
+                allowed={'metadao-wordmark.jpeg':'image/jpeg','metadao.png':'image/png','futardio.png':'image/png','ownership.jpeg':'image/jpeg','futarchist-banner.jpeg':'image/jpeg','futarchist-logo.jpeg':'image/jpeg'}
                 if asset not in allowed:raise AppError('File not found.',404)
                 self.send_data((STATIC/'assets'/asset).read_bytes(),content_type=allowed[asset]);return
-            if not mutating and path in ('/','/emulator','/guide','/app.js','/operations.js','/style.css','/guidance.css','/emulator.js'):
+            if not mutating and path in ('/','/emulator','/guide','/app.js','/operations.js','/style.css','/guidance.css','/branding.css','/emulator.js'):
                 if path=='/emulator' and not self.server.demo: raise AppError('The simulator is available only in demo mode.',404)
                 name={'/':'index.html','/emulator':'emulator.html','/guide':'guide.html'}.get(path,path.lstrip('/'))
                 file=STATIC/name
