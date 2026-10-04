@@ -1,0 +1,50 @@
+/* Image placement only. Existing colors, fonts and text remain unchanged. */
+.identity-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 1;
+    object-fit: contain;
+}
+.login > .identity-banner,
+.guide > .identity-banner {
+    margin-bottom: 24px;
+}
+#shell > .identity-banner {
+    max-width: 1200px;
+    margin: 16px auto 0;
+    padding: 0 30px;
+}
+.brand-picture {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 9px;
+}
+/* Display a square window in the supplied screenshot. Source bytes are intact. */
+.brand-picture > img {
+    position: absolute;
+    display: block;
+    width: 190.952381%;
+    height: auto;
+    max-width: none;
+    left: -45%;
+    top: -16.190476%;
+}
+.topbar .brand-picture {
+    width: 40px;
+    height: 40px;
+}
+.guide .brand-picture {
+    width: 50px;
+    height: 50px;
+}
+@media (max-width: 700px) {
+    #shell > .identity-banner {
+        margin-top: 12px;
+        padding: 0 14px;
+    }
+}
