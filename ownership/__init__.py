@@ -1,2 +1,2 @@
-"""Ownership intake and relationship management. No AI services."""
-__version__ = "2.1.1"
+"""Ownership intake and relationship management."""
+__version__ = "2.1.2"

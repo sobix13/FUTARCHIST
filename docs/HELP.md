@@ -1,6 +1,14 @@
 # FUTARCHIST command help
 
-FUTARCHIST uses English throughout the Telegram bot, admin screens, browser dashboard, forms and documentation. No AI services are used. All authority comes from numeric Telegram IDs and workspace permissions.
+Choose your entry point below. Project representatives submit information. Admins manage it inside a personal or shared workspace. Superadmins control admin access and system operations.
+
+| Role | Start here | Next action |
+| --- | --- | --- |
+| Project representative | Open your contact's intake link | Complete the form and review before Submit |
+| Admin | `/manage` or Open dashboard | Choose a workspace, then Access codes or Cases |
+| Superadmin | `/manage` > Admins | Add admins, create team spaces and set permissions |
+
+Use `/guide` for section instructions and `/support` if an action fails. Access is checked against numeric Telegram IDs and workspace permissions.
 
 ## Project representatives
 
@@ -14,7 +22,7 @@ FUTARCHIST uses English throughout the Telegram bot, admin screens, browser dash
 | `/cancel` | Discard the active draft; existing submissions remain |
 | `/stop` | Stop optional DM invitations; case replies remain available |
 | `/help` | Open command help |
-| `/guide` | Open the English section guide inside Telegram |
+| `/guide` | Open section instructions inside Telegram |
 | `/support` | Show the configured support contacts |
 | `/id` | Show your numeric Telegram ID |
 

@@ -1,16 +1,16 @@
 {
-  "timestamp_utc": "2026-10-04T03:21:50.119394+00:00",
+  "timestamp_utc": "2026-10-04T07:50:51.334570+00:00",
   "kind": "Fresh extraction of the distributable, checksum verification and full Python regression",
-  "manifest_files": 77,
+  "manifest_files": 85,
   "private_runtime_files": "excluded",
-  "original_logo_files": 4,
+  "original_logo_files": 6,
   "backend": {
-    "tests": 303,
+    "tests": 321,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
     "status": "passed"
   },
   "status": "passed",
-  "test_log": "Update processing failed; update_id=1\n----------------------------------------------------------------------\nRan 303 tests in 19.206s\n\nOK\n"
+  "test_log": "Update processing failed; update_id=1\n----------------------------------------------------------------------\nRan 321 tests in 20.136s\n\nOK\n"
 }

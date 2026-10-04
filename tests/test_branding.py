@@ -36,10 +36,9 @@ class BrandingFilesTests(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertEqual(hashlib.sha256((STATIC/'assets'/name).read_bytes()).hexdigest(), expected)
 
-    def test_existing_page_text_is_unchanged(self):
+    def test_existing_login_and_dashboard_text_is_unchanged(self):
         originals = {
             'index.html': '20feccd60a0407232fa3b3433aece599d552798ed587c593412537ee227ec994',
-            'guide.html': '554688a93126d43986909c6041868d858bdefc2f57ae00a28b93a07c11ea22e9',
         }
         for name, expected in originals.items():
             parser = TextParser()

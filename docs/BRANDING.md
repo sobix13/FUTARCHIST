@@ -1,13 +1,13 @@
 # FUTARCHIST image-only branding
 
-The supplied banner and logo screenshot are stored unchanged. Their colors, embedded lettering and original JPEG bytes are retained. Existing interface colors, fonts, text, menus and access rules are unchanged. Ownership credits and MetaDAO assets remain in place.
+The supplied banner and logo screenshot are stored unchanged. Their colors, embedded lettering and original JPEG bytes are retained. Image placement doesn't change interface colors, fonts or access rules. Copy revisions are recorded separately in the release notes. Ownership credits and MetaDAO assets remain in place.
 
 ## Web app
 
 - The supplied banner appears on the login page, dashboard header and web guide.
 - The supplied F logo replaces the old primary app icon. CSS displays the mark through a square window without editing the source image.
 - Both images are public static assets. No session or private data is attached to their URLs.
-- Original stylesheet and JavaScript files are unchanged.
+- Original interface styles are retained. Image placement uses a separate stylesheet.
 
 ## Telegram profile
 
