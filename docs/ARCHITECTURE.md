@@ -1,6 +1,6 @@
 # FUTARCHIST: architecture and invariants
 
-Version 2.1.0, schema 2. English is the only interface language. The runtime is a Python standard-library service on one persistent VPS. Native Telegram screens and the optional web panel invoke the same application operations. The existing fundraising website is a separate product. Its data is not automatically imported or synchronized.
+Version 2.1.1, schema 2. English is the only interface language. The runtime is a Python standard-library service on one persistent VPS. Native Telegram screens and the web dashboard invoke the same application operations. The existing fundraising website is a separate product. Its data is not automatically imported or synchronized.
 
 ## Surfaces
 
