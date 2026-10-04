@@ -1,9 +1,9 @@
 {
   "type": "DOM integration, not browser rendering",
-  "started_at": "2026-10-04T07:27:00.155Z",
+  "started_at": "2026-10-04T07:50:05.953Z",
   "checks": [
     {
-      "name": "English-only interface and left-to-right document",
+      "name": "Document metadata and reading direction",
       "status": "passed"
     },
     {
@@ -135,7 +135,7 @@
       "status": "passed"
     },
     {
-      "name": "English Telegram simulator boots and Start opens the guest home",
+      "name": "Telegram simulator boots and Start opens the guest home",
       "status": "passed"
     },
     {
@@ -153,5 +153,5 @@
   ],
   "errors": [],
   "status": "passed",
-  "finished_at": "2026-10-04T07:27:06.989Z"
+  "finished_at": "2026-10-04T07:50:12.891Z"
 }
