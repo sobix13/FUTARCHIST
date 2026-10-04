@@ -2,10 +2,10 @@
 <html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FUTARCHIST | Complete user guide</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/branding.css"><link rel="icon" type="image/jpeg" href="/assets/futarchist-logo.jpeg"></head><body>
 <main class="guide">
 <img class="identity-banner" src="/assets/futarchist-banner.jpeg" alt="FUTARCHIST" width="1536" height="512">
-<div class="brand-lockup"><span class="brand-picture"><img src="/assets/futarchist-logo.jpeg" alt="FUTARCHIST" width="802" height="549"></span><div class="brand">FUTARCHIST<span>User and deployment guide · Version 2.1</span></div></div>
+<div class="brand-lockup"><span class="brand-picture"><img src="/assets/futarchist-logo.jpeg" alt="FUTARCHIST" width="802" height="549"></span><div class="brand">FUTARCHIST<span>User and deployment guide · Version 2.1.2</span></div></div>
 <h1>Keep information and work in the right workspace</h1>
 <p>FUTARCHIST collects project information and fundraising details, manages contact with representatives, and organizes internal teams, programs and follow-ups. It serves individual admins, agencies, hosts and management teams. Its scope extends beyond radio guests.</p>
-<p>English is the only interface language. The bot, forms, admin panels, errors and documentation use English. There is no language selector. People enter their own information. Filters use explicit criteria, and invitations require a preview and confirmation. No AI services are used.</p>
+<p>Project representatives submit through a contact's intake link. Admins review those submissions in the link's workspace. Superadmins add admins and set team permissions. Telegram and the web dashboard use the same records, so work can continue in either interface.</p>
 <div class="card"><h2>Start here</h2><p><bdi>1. Choose a workspace.</bdi> Use a personal space for individual work or a team space for shared work. <bdi>2. Collect information.</bdi> Create an Access code and share its intake link. <bdi>3. Review the case.</bdi> Check General and Raise, record the status, assignee and follow-up. <bdi>4. Plan the next action.</bdi> Use Tasks, Programs and confirmed Invitations.</p><p>Inside Telegram, use <code>/guide</code> or the Guide button on any management screen. It preserves your draft and active admin step. Each web page has a How to use section with steps, the next action and a link here. Once HTTPS is connected, Open dashboard is the primary admin home action. Native management remains available through <code>/manage</code>.</p></div>
 <div class="notice">Test bot: <a href="https://t.me/FutarchistBot">@FutarchistBot</a> · Product: FUTARCHIST. Install the package on your VPS for permanent operation. Set your own HTTPS origin for the web dashboard.</div>
 <div class="card"><h2>Choose a section</h2><div class="actions"><a href="#guest">Submit information</a><a href="#admins">Admins and teams</a><a href="#codes">Access codes</a><a href="#projects">Cases</a><a href="#filters">Filters</a><a href="#programs">Programs</a><a href="#tasks">Tasks</a><a href="#invites">Invitations and groups</a><a href="#exports">Exports</a><a href="#texts">Bot text</a><a href="#health">Health and recovery</a><a href="#browser">Web dashboard</a><a href="#deploy">Deployment</a><a href="#acceptance">Acceptance tests</a></div></div>
@@ -75,8 +75,8 @@
 
 <section id="texts"><h2>10. Editable bot text and questions</h2>
 <p>Superadmins open Bot text to edit the welcome message, help, invitation template and question wording. The same controls are available in Telegram and the browser dashboard.</p>
-<p>Custom question text is used in English-only guest forms. Editing wording preserves field types, conditional questions and validation. A custom schema or question builder is future work. Invitation templates accept only the four supported variables.</p>
-<p>Concurrent edits require the current text version. Public bot name, description and English command menus are set using the deployment command <code>--configure-bot</code>.</p></section>
+<p>Editing question wording preserves field types, conditional questions and validation. A custom schema or question builder is future work. Invitation templates accept only the four supported variables.</p>
+<p>Concurrent edits require the current text version. Public bot name, description and command menus are set using the deployment command <code>--configure-bot</code>.</p></section>
 
 <section id="health"><h2>11. Health, troubleshooting and bounded recovery</h2>
 <p>Superadmins use <code>/health</code> or the health page. It shows database integrity, references, disk space, worker heartbeats, delivery queues, failed updates and recorded incidents. Failed update IDs are available for review.</p>
@@ -90,7 +90,7 @@
 <p><code>/manage</code> works inside Telegram. With HTTPS configured, open the panel button or request a personal browser link with <code>/panel</code>. The link is single-use and expires in 5 minutes.</p>
 <p>Mini App identity is verified on the server. Typing an ID or username into a browser never grants admin access. Use the workspace selector to switch spaces. Lists and filters follow the selected workspace.</p>
 <p>On a connection failure, use Refresh or the native Telegram fallback. If a save response did not arrive, check the current status before repeating it. A request might have been stored before the response failed.</p>
-<p>All built-in copy uses English and left-to-right layout. Dates and numbers use English formatting. User-entered records stay as entered. Upgrading from the earlier build converts recognized built-in defaults and preserves custom copy and form answers. Previously delivered messages remain part of their original history.</p></section>
+<p>The dashboard doesn't create a separate copy of your cases. Changes made through Telegram or the browser are stored in the same workspace. Switching interfaces doesn't change the source admin, assignee or member permissions.</p></section>
 
 <section id="deploy"><h2>13. Local execution and VPS deployment</h2>
 <pre>python3 -m venv .venv
@@ -113,7 +113,7 @@ npm run test:dom
 npx playwright install chromium
 npm run test:ui</pre>
 <p>Before broad use, test both real superadmins, restricted codes, all three form purposes, a read-only team member, reassignment, questions/replies, opt-out, a real group, invitation confirmation, file downloads, archive/restore and code revocation mid-draft.</p>
-<p>Open the HTTPS panel in Telegram on iOS, Android and desktop and in an ordinary browser. Check English layout, 390px width, focus, dialogs, logos and file downloads. The report identifies checks blocked by the build environment. Production load, disk failure and independent security review are separate acceptance work.</p>
+<p>Open the HTTPS panel in Telegram on iOS, Android and desktop and in an ordinary browser. Check 390px width, focus, dialogs, logos and file downloads. The report identifies checks blocked by the build environment. Production load, disk failure and independent security review are separate acceptance work.</p>
 <p>Later work includes importing the previous website, calendar sync, reminders, multiple raise rounds, attachments and PostgreSQL. These are listed separately in the operations package and are not active in this release.</p>
 <h3>Technical sources</h3><p><a href="https://core.telegram.org/bots/api">Telegram Bot API</a>, <a href="https://core.telegram.org/bots/faq">Bot limits</a>, <a href="https://core.telegram.org/bots/webapps">Mini Apps</a>, <a href="https://sqlite.org/wal.html">SQLite WAL</a> and <a href="https://sqlite.org/backup.html">SQLite Backup</a>. Access policies, limits and bounded recovery are app-specific decisions.</p></section>
 <hr><div class="row space-between"><div class="credit"><img src="/assets/ownership.jpeg" alt="Ownership" width="32" height="32"><strong>Built by Ownership</strong></div><img src="/assets/metadao-wordmark.jpeg" alt="MetaDAO" width="140" height="28"></div>
