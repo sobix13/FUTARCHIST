@@ -1,9 +1,17 @@
 {
   "type": "DOM integration, not browser rendering",
-  "started_at": "2026-10-04T03:21:06.663Z",
+  "started_at": "2026-10-04T07:27:00.155Z",
   "checks": [
     {
       "name": "English-only interface and left-to-right document",
+      "status": "passed"
+    },
+    {
+      "name": "Original FUTARCHIST banner and logo render in login and dashboard image slots",
+      "status": "passed"
+    },
+    {
+      "name": "Image-only stylesheet is separate and Ownership credit is preserved",
       "status": "passed"
     },
     {
@@ -145,5 +153,5 @@
   ],
   "errors": [],
   "status": "passed",
-  "finished_at": "2026-10-04T03:21:14.788Z"
+  "finished_at": "2026-10-04T07:27:06.989Z"
 }

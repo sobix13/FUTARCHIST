@@ -1,0 +1,33 @@
+{
+  "update": "image-only FUTARCHIST branding for version 2.1.1",
+  "base_commit": "716e23f857ec0b06d1a50705c603da44acfecdc6",
+  "interface_language": "en",
+  "backend": {"status": "passed", "tests": 314, "failures": 0, "errors": 0},
+  "branding_tests": {"status": "passed", "tests": 11},
+  "dom": {"status": "passed", "checks": 37, "type": "DOM integration, not browser rendering"},
+  "preservation": {
+    "supplied_banner_bytes": "unchanged",
+    "supplied_logo_bytes": "unchanged",
+    "interface_colors": "unchanged",
+    "interface_fonts": "unchanged",
+    "visible_page_text": "unchanged",
+    "style_css": "unchanged",
+    "guidance_css": "unchanged",
+    "app_js": "unchanged",
+    "operations_js": "unchanged",
+    "ownership_credit": "preserved",
+    "metadao_assets": "preserved"
+  },
+  "live_telegram": {
+    "profile_updated": true,
+    "bot_id": 8911627546,
+    "username": "FutarchistBot",
+    "text_changed": false,
+    "menus_changed": false,
+    "method": "setMyProfilePhoto",
+    "description_image": "requires the bot owner's BotFather interface"
+  },
+  "vps_web_update": "pending owner execution",
+  "banner_sha256": "c5f3c21be5773c66f12998332f1b1447597a3ae3c2c0facb0271ced03595efff",
+  "logo_sha256": "e4df17b4da53a457662b721794f5d193f771e41dfc909cbd314cfc09319ed8e2"
+}
