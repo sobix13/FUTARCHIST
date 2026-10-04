@@ -1,6 +1,6 @@
 {
   "type": "DOM integration, not browser rendering",
-  "started_at": "2026-10-03T17:55:02.489Z",
+  "started_at": "2026-10-04T03:21:06.663Z",
   "checks": [
     {
       "name": "English-only interface and left-to-right document",
@@ -19,51 +19,55 @@
       "status": "passed"
     },
     {
-      "name": "Render inbox",
+      "name": "Overview maps the four work steps and groups navigation",
       "status": "passed"
     },
     {
-      "name": "Render events",
+      "name": "Render and section guide inbox",
       "status": "passed"
     },
     {
-      "name": "Render tasks",
+      "name": "Render and section guide events",
       "status": "passed"
     },
     {
-      "name": "Render exports",
+      "name": "Render and section guide tasks",
       "status": "passed"
     },
     {
-      "name": "Render texts",
+      "name": "Render and section guide exports",
       "status": "passed"
     },
     {
-      "name": "Render raise",
+      "name": "Render and section guide texts",
       "status": "passed"
     },
     {
-      "name": "Render campaigns",
+      "name": "Render and section guide raise",
       "status": "passed"
     },
     {
-      "name": "Render routes",
+      "name": "Render and section guide campaigns",
       "status": "passed"
     },
     {
-      "name": "Render team",
+      "name": "Render and section guide routes",
       "status": "passed"
     },
     {
-      "name": "Render audit",
+      "name": "Render and section guide team",
       "status": "passed"
     },
     {
-      "name": "Render deliveries",
+      "name": "Render and section guide audit",
       "status": "passed"
     },
     {
-      "name": "Render operations",
+      "name": "Render and section guide deliveries",
+      "status": "passed"
+    },
+    {
+      "name": "Render and section guide operations",
       "status": "passed"
     },
     {
@@ -129,9 +133,17 @@
     {
       "name": "Telegram simulator opens native admin controls",
       "status": "passed"
+    },
+    {
+      "name": "Telegram guide opens without a web login link",
+      "status": "passed"
+    },
+    {
+      "name": "Native case guide explains source, assignee, status and next actions",
+      "status": "passed"
     }
   ],
   "errors": [],
   "status": "passed",
-  "finished_at": "2026-10-03T17:55:09.005Z"
+  "finished_at": "2026-10-04T03:21:14.788Z"
 }

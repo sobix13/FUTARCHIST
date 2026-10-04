@@ -43,6 +43,32 @@ Both superadmins start the bot. Rerun configure after their first Start to insta
 
 ## 3. Independent services and HTTPS
 
+### Complete HTTPS setup without buying a domain
+
+After updating the installed source, run the supplied installer as root:
+
+```bash
+cd /srv/futarchist
+bash extensions/setup-web.sh
+```
+
+It derives a public IPv4 address from the SSH connection, falling back to the HTTPS ipify API. It creates a hostname such as `futarchist-8-8-8-8.sslip.io`, verifies its DNS, installs nginx and Certbot, obtains a certificate, starts the independent web service and verifies its public HTTPS response. It then updates only `APP_URL`, preserving the bot token, owner IDs, file mode and ownership. It restarts the two app services and registers the command menus. Open the bot, send `/start`, then choose **Open dashboard**. `/panel` provides the personal browser login link.
+
+The installer retains local rollback copies, restores existing app configuration on failure, and leaves other nginx sites in place. A different process using port 80 or 443 stops setup before changes. It never disables another proxy or opens/reset firewall rules. Public TCP ports 80 and 443 must already reach the VPS. The hostname remains usable while this IP and the public DNS service remain available. A custom domain replaces that dependency later.
+
+Use explicit inputs when the server is behind NAT or a different public address is needed:
+
+```bash
+FUTARCHIST_PUBLIC_IPV4=YOUR_PUBLIC_IPV4 bash extensions/setup-web.sh
+FUTARCHIST_WEB_HOST=panel.example.com bash extensions/setup-web.sh
+```
+
+Do not use both alternatives at once. For a custom domain, its DNS must point to this server. Existing non-nginx proxies need their own configuration using the loopback upstream described below.
+
+Primary references: [sslip.io DNS and TLS](https://sslip.io/), [Certbot webroot authentication](https://eff-certbot.readthedocs.io/en/stable/using.html#webroot), [HTTP-01 reachability](https://letsencrypt.org/docs/challenge-types/#http-01-challenge), and [ipify](https://www.ipify.org/).
+
+### Manual proxy setup
+
 The service examples assume `/srv/futarchist` and the `futarchist` account. Edit paths before installing if your setup differs.
 
 ```bash

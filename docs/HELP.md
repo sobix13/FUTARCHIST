@@ -14,10 +14,13 @@ FUTARCHIST uses English throughout the Telegram bot, admin screens, browser dash
 | `/cancel` | Discard the active draft; existing submissions remain |
 | `/stop` | Stop optional DM invitations; case replies remain available |
 | `/help` | Open command help |
+| `/guide` | Open the English section guide inside Telegram |
 | `/support` | Show the configured support contacts |
 | `/id` | Show your numeric Telegram ID |
 
 Your contact can also share an intake link. The code or link activates its assigned route. A guest code never makes someone an admin. Continue through the consent screen, choose general information, raise review or both when offered, complete the short conditional form and review before submitting. Use Save and leave to keep a draft. Optional questions can be skipped.
+
+Guide is visible on the guest home screen and every native management screen, including active forms. `/guide` opens sections for your role without changing drafts or the current admin step. Resume form or Resume admin step returns to that work. `/help` also opens the guide alongside the editable command-help text. No web service or HTTPS address is required for the Telegram guide.
 
 If your code is inactive, expired or at capacity, ask the person who supplied it for a replacement. Keep using the newest message's buttons. Follow-up questions and invitation responses use links tied to the appropriate representative or project.
 

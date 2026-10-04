@@ -1,10 +1,10 @@
-# FUTARCHIST 2.1
+# FUTARCHIST 2.1.1
 
-An English-only Telegram management app for project information, fundraising reviews, teams, agencies, hosts and programs in the MetaDAO and Futardio ecosystem. Native Telegram management, an optional browser dashboard, private access codes, case history, programs, tasks and Excel/CSV exports. No AI services or emoji controls. Built by Ownership.
+An English-only Telegram management app for project information, fundraising reviews, teams, agencies, hosts and programs in the MetaDAO and Futardio ecosystem. Native Telegram management and a browser dashboard, private access codes, case history, programs, tasks and Excel/CSV exports. No AI services or emoji controls. Built by Ownership.
 
 ## Repository contents and downloads
 
-This repository contains the complete English 2.1 release. The ZIP filenames retain `v2`; the application version inside is `2.1.0`.
+This repository contains the complete English 2.1.1 release. The ZIP filenames retain `v2`; the application version inside is `2.1.1`.
 
 | Resource | Contents |
 | --- | --- |
@@ -61,6 +61,8 @@ With `APP_URL` empty, management remains available entirely within Telegram. To 
 .venv/bin/python -m futarchist --env .env --mode web --port 8765
 ```
 
+For the installed Ubuntu/Debian VPS, `bash extensions/setup-web.sh` completes HTTPS and enables the web service. No purchased domain is required: it uses an IP-based `sslip.io` hostname, or your `FUTARCHIST_WEB_HOST`. The installer checks for conflicting proxies, preserves credentials and owner IDs, and keeps the bot and web in separate units. See the HTTPS section of [deployment](extensions/DEPLOY.md) for reachability requirements and rollback.
+
 `--mode all` runs both processes together for local use. On a VPS, the two supplied systemd units isolate bot and web failures. Both use the same database on a local persistent disk. Run one polling worker only. An existing Telegram webhook is not removed automatically.
 
 ## Workspaces and access codes
@@ -72,6 +74,10 @@ The admin shares a code or intake link with a project representative. `/activate
 General review and raise review use separate case branches. Each records its source admin ID and name, current assignee, status and history. Reassignment preserves the original source. Submissions in different workspaces are not merged automatically.
 
 ## English-only interface
+
+Open **Guide** on the Telegram home screen or any native management screen, or send `/guide`. It explains submissions, replies, workspaces, codes, cases, filters, programs, tasks, invitations, exports, admin permissions, bot text, health and browser access. Sections follow the user's role. Opening the guide preserves saved guest forms and the active admin step. `/help` and `/guide` are registered in the command menu by `--configure-bot`. The native guide works without HTTPS or a running browser service.
+
+The web Overview maps four steps: select a workspace, collect information, review cases and plan the next action. Navigation groups follow that workflow. Every section includes **How to use**, numbered steps, the next action and a link to the matching full-guide section. Access codes uses the same label in Telegram and the dashboard. Once HTTPS is configured, **Open dashboard** is the primary admin home action. Telegram management remains the fallback.
 
 Bot messages, guest forms, inline buttons, native admin screens, web dashboards, validation errors, demo content, guides and documentation use English. There is no language selector. Dashboard text flows left to right, with English date and number formatting.
 

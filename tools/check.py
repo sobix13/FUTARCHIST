@@ -54,7 +54,7 @@ def guide_check():
 def english_check():
     paths=[ROOT/'README.md']
     for folder in ('ownership','futarchist','tests','docs','extensions','tools'):
-        paths.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix in ('.py','.js','.mjs','.html','.css','.md','.sql','.example'))
+        paths.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix in ('.py','.js','.mjs','.html','.css','.md','.sql','.sh','.example'))
     violations=[]
     for path in paths:
         value=path.read_text()
@@ -65,11 +65,13 @@ def english_check():
     return {'name':'English-only source, documentation and HTML language audit','status':'failed' if violations else 'passed','files':len(paths),'violations':violations}
 
 def main():
-    report={'version':'2.1.0','interface_language':'en','timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'environment':{'python':sys.version.split()[0],'platform':sys.platform,'runtime_dependencies':'Python standard library','virtual_environment':sys.prefix!=sys.base_prefix}}
-    first=['tests.test_core'];second=['tests.test_bot','tests.test_delivery','tests.test_http','tests.test_futarchist','tests.test_native','tests.test_operations','tests.test_language'];full=first+second+['tests.test_regression']
+    from futarchist import __version__
+    report={'version':__version__,'interface_language':'en','timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'environment':{'python':sys.version.split()[0],'platform':sys.platform,'runtime_dependencies':'Python standard library','virtual_environment':sys.prefix!=sys.base_prefix}}
+    first=['tests.test_core'];second=['tests.test_bot','tests.test_delivery','tests.test_http','tests.test_futarchist','tests.test_native','tests.test_operations','tests.test_language','tests.test_guide','tests.test_web_setup'];full=first+second+['tests.test_regression']
     report['phases']=[phase('1. Core and independent access rules',first),phase('2. Native Telegram, HTTP, exports, lifecycle and English migration',second),phase('3. Full regression, concurrency, isolation and backup',full)]
     report['unique_test_cases']=len({x['test'] for x in report['phases'][-1]['entries']})
     report['static_checks']=[command('Python compile',[sys.executable,'-W','error','-m','compileall','-q','ownership','futarchist','tests','extensions','tools']),guide_check(),english_check()]
+    report['static_checks'].append(command('HTTPS installer shell syntax',['bash','-n','extensions/setup-web.sh']))
     node=shutil.which('node')
     if node:
         for file in ('ownership/static/app.js','ownership/static/operations.js','ownership/static/emulator.js','tests/dom-check.mjs','tests/ui-check.mjs'):
@@ -93,14 +95,14 @@ def main():
     live_text='Live Bot API '+live.get('status','not_run')+' · '+live.get('username','')+' · worker '+worker.get('status','not_run')
     document=f'''<!doctype html><html lang="en" dir="ltr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FUTARCHIST | Test report</title>
 <style>body{{margin:0;background:#f3f6f6;color:#193239;font:14px/1.7 system-ui,sans-serif}}main{{max-width:1100px;margin:30px auto;background:#fff;padding:32px;border:1px solid #d5e1e3;border-radius:14px}}h1{{font-size:28px}}h2{{margin-top:28px;font-size:19px}}table{{width:100%;border-collapse:collapse;font-size:12px}}td,th{{text-align:start;border-bottom:1px solid #dce5e7;padding:9px;overflow-wrap:anywhere}}.notice{{background:#fff8eb;border:1px solid #e9dcc2;padding:18px;border-radius:8px}}.ok{{background:#edf7f6;padding:18px;border-radius:8px}}@media(max-width:700px){{main{{margin:12px;padding:18px}}}}</style>
-<main><h1>FUTARCHIST 2.1 · Test report</h1><p>{html.escape(report['timestamp_utc'])} · Python {report['environment']['python']} · Virtual environment: {report['environment']['virtual_environment']}</p>
+<main><h1>FUTARCHIST {report['version']} · Test report</h1><p>{html.escape(report['timestamp_utc'])} · Python {report['environment']['python']} · Virtual environment: {report['environment']['virtual_environment']}</p>
 <div class="ok"><strong>{report['unique_test_cases']} independent backend test cases · {report['backend_status']}</strong><p>Three passes ran separately. The third pass repeats the full suite, so total executions exceed the number of unique cases.</p></div>
 <table><tr><th>Pass</th><th>Tests</th><th>Result</th><th>Failures</th><th>Errors</th></tr>{rows}</table>
 <h2>English-only release</h2><p>Bot messages, questions, buttons, validation, dashboards, guides and sample content use English. No language selector remains. Upgrade tests cover legacy defaults, cached form titles, user-data preservation and idempotence.</p>
 <h2>Static checks</h2><ul>{static}</ul>
 <h2>Interface integration</h2><p>{len(dom.get('checks',[]))} DOM checks · {dom.get('status','not_run')} · real HTTP on loopback. This verifies interactive behavior without graphical browser rendering, layout measurement or screenshots.</p><ul>{checks}</ul>
 <h2>Live Telegram connection</h2><p>{html.escape(live_text)}</p><p>Bot identity, name, privacy mode, webhook and command menus were read through the real API. Worker duration: {worker.get('seconds',0)} seconds. Received updates: {worker.get('received_updates','unknown')}. Delivered messages: {worker.get('delivered_messages','unknown')}.</p><p>Both superadmins are configured in the app. Their scoped command menus can be configured after their first Start using --configure-bot.</p>
-<h2>Acceptance still required</h2><div class="notice"><p>The cloud browser blocked local access with ERR_BLOCKED_BY_CLIENT; the Chromium download also failed. Visual design, actual mobile layout, the official Telegram client, public HTTPS Mini App flow and real group invitation/reply flows are unverified.</p><p>A brief worker smoke test is not a human end-to-end test. Support account identities come from the supplied numeric IDs. Account ownership has not been checked through human login.</p><p>No production VPS is deployed. Large-scale load, real disk failure and an independent security audit have not been tested. Recovery is bounded; uninterrupted connectivity is not guaranteed.</p></div>
+<h2>Acceptance still required</h2><div class="notice"><p>The cloud browser blocked local access with ERR_BLOCKED_BY_CLIENT; the Chromium download also failed. Visual design, actual mobile layout, the official Telegram client, public HTTPS Mini App flow and real group invitation/reply flows are unverified.</p><p>A brief worker smoke test is not a human end-to-end test. Support account identities come from the supplied numeric IDs. Account ownership has not been checked through human login.</p><p>This build check does not deploy to or validate the user's VPS. Public HTTPS must pass the installer checks on that server. Large-scale load, real disk failure and an independent security audit have not been tested. Recovery is bounded; uninterrupted connectivity is not guaranteed.</p></div>
 <h2>Regression coverage</h2><ul><li>Access revoked during a draft; old buttons cannot submit it.</li><li>General and financial permissions remain separate in forms, history, programs, tasks and exports.</li><li>Both superadmins have equal authority; personal and team workspaces stay isolated.</li><li>Stale edits are rejected; destructive confirmations are single-use.</li><li>Malformed updates and failed Excel exports do not block independent queues.</li><li>Verified backups run without request-transaction deadlocks.</li><li>Source attribution survives reassignment, code rotation and archiving.</li><li>Suspended authors remain attributed; exports are not limited to dashboard rows.</li><li>Late workspace responses cannot replace the current dashboard.</li><li>Raise status changes clear fields that no longer apply.</li></ul>
 <h2>Final test cases</h2><table><tr><th>Test</th><th>Result</th></tr>{tests}</table><p>Built by Ownership · Support @sobix13 / @SrMessiSOL</p></main></html>'''
     (directory/'test-report.html').write_text(document)
