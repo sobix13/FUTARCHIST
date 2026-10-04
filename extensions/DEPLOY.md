@@ -39,7 +39,7 @@ sudo -u futarchist .venv/bin/python -m futarchist --env .env --configure-bot
 
 This version uses polling. If a webhook exists, resolve the connection method first. The app does not remove it automatically. Run only one polling worker for this database.
 
-Both superadmins start the bot. Rerun configure after their first Start to install scoped command menus for recognized chats. `/manage` and numeric-ID permissions work independently of those menus. All configured command descriptions are English.
+Both superadmins start the bot. Rerun configure after their first Start to install scoped command menus for recognized chats. `/manage` and numeric-ID permissions work independently of those menus.
 
 ## 3. Independent services and HTTPS
 
@@ -133,12 +133,12 @@ Set `DATABASE_PATH` to `data/recovered.sqlite3`. The original database is not ov
 
 With both superadmins and a temporary admin, create personal and team workspaces. Test single-use and team codes, general-only, raise-only and combined forms, code revocation mid-draft, read-only membership, reassignment, questions and replies, a real group, invitation preview, opt-out, Excel/CSV, archive and restore.
 
-Open the HTTPS dashboard in Telegram on mobile and desktop and through a browser login link. Check the English left-to-right layout, mobile width, focus, dialogs and downloads. DOM and local simulator tests do not verify official Telegram client rendering. The separate test report identifies completed and pending checks.
+Open the HTTPS dashboard in Telegram on mobile and desktop and through a browser login link. Check mobile width, focus, dialogs and downloads. DOM and local simulator tests don't verify official Telegram client rendering. The separate test report identifies completed and pending checks.
 
 ## 7. Upgrade
 
 Stop services and take a verified backup before replacing source. Schema 1 upgrades create a separate pre-migration snapshot. Do not run older code against the upgraded database.
 
-The English-only update uses schema 2. On startup it updates recognized legacy built-in copy and generated workspace/code labels, removes old language preferences and converts cached admin form titles. It preserves custom copy, names, project records, answers, permissions, source tags and delivered message history. Reopen `/manage` to use the current buttons.
+Version 2.1.2 keeps schema 2 and needs no new data migration. Existing startup compatibility handles recognized legacy defaults and cached form titles while preserving custom copy, records, answers, permissions and source tags. Reopen `/manage` to use the current screens. Already delivered Telegram messages remain in their original history.
 
 See `UPDATES.md` for implemented features and later work. Multiple servers and larger loads require a separate PostgreSQL and queue migration.

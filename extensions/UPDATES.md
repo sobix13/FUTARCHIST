@@ -4,7 +4,7 @@
 
 Two configured superadmins, personal and team workspaces, eight workspace permissions, admin activation codes, short conditional forms, independent general/raise branches, immutable source tags, assignment and status, notes and guest replies, verified group binding, personalized invitation preview/confirmation, programs and participation, tasks, archive/restore, permanent project purge, editable bot copy, native Telegram management, browser management, Excel/CSV, health, bounded autorepair, database backups and schema 1 migration.
 
-Version 2.1 uses English only throughout the bot, forms, dashboard, errors, guides and documentation. There is no language selector. The dashboard uses left-to-right layout and English dates and numbers. Recognized legacy built-in defaults are updated at startup. Custom copy and user-entered records remain as entered.
+Version 2.1.2 puts role entry points and the intake-to-follow-up workflow first. The bot, web guide and offline guide explain the same sections. This update changes copy and packaging, not workspace permissions or stored records.
 
 The HTML guide explains every screen. The bot and web systemd examples run separately. `maintenance.py` makes consistent snapshots or restores only into a new destination. The source contains real-HTTP simulation tests, DOM integration tests and a separate Chromium script.
 
@@ -68,10 +68,10 @@ Before enabling user traffic, confirm the owners, team memberships, existing pro
 | Private enterprise deployment policies | A team policy is needed | At-rest encryption, retention, access review and backup policy |
 | Custom question builder | Owner can edit text today, field schema remains controlled | Versioned form definitions and migration of existing responses |
 
-No AI feature is part of this roadmap. Features in this table are not presented as working features in the release.
+Features in this table aren't active in this release.
 
 ## Real-client acceptance before broad rollout
 
 With both superadmins, Start and `/manage`, add one temporary admin and one team. Give one guest a single-use personal code and another a team code. Complete general-only, raise-only and combined forms. Verify source tags, permissions, reassignment, replies, opt-in and opt-out, group bind, personal invitation preview, archive/restore, Excel/CSV and code revocation mid-draft.
 
-Open the HTTPS panel from Telegram on iOS, Android and desktop, and in an ordinary browser with the one-use login link. Check logos, English left-to-right layout, 390px width, focus, dialogs, native file downloads, connection fallback and permissions after refresh. Run the Chromium script locally. Check real group permissions and Telegram rate-limit behavior. This package's local simulator and DOM tests do not certify official Telegram client behavior or the production network.
+Open the HTTPS panel from Telegram on iOS, Android and desktop, and in an ordinary browser with the one-use login link. Check logos, 390px width, focus, dialogs, native file downloads, connection fallback and permissions after refresh. Run the Chromium script locally. Check real group permissions and Telegram rate-limit behavior. This package's local simulator and DOM tests don't certify official Telegram client behavior or the production network.
