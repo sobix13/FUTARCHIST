@@ -1,10 +1,31 @@
-# FUTARCHIST 2.1.1
+# FUTARCHIST 2.1.2
 
-An English-only Telegram management app for project information, fundraising reviews, teams, agencies, hosts and programs in the MetaDAO and Futardio ecosystem. Native Telegram management and a browser dashboard, private access codes, case history, programs, tasks and Excel/CSV exports. No AI services or emoji controls. Built by Ownership.
+FUTARCHIST collects project information and fundraising details through Telegram. Admins review submissions, coordinate teams, plan programs and follow up from Telegram or the web dashboard. Built by Ownership for work across the MetaDAO ecosystem, including agencies, hosts and fundraising reviewers.
+
+## Start with your role
+
+| You are | Open | First action |
+| --- | --- | --- |
+| Project representative | Your contact's intake link, or `/activate CODE` | Complete General, Raise or Both, then review and submit |
+| Admin | `/manage` or Open dashboard | Select your workspace, open Access codes and share an intake link |
+| Superadmin | `/manage` > Admins | Add an admin by numeric Telegram ID, then set up shared teams if needed |
+
+The daily workflow is: select a workspace, share its code, review submitted Cases, assign a next action, then track Tasks, Programs or confirmed Invitations. `/guide` explains the section you're using without discarding your current work.
+
+## How the parts fit together
+
+| Part | What it does | Where the result goes |
+| --- | --- | --- |
+| Access code | Chooses the workspace, source admin, initial reviewer and form purpose | A representative's submission creates or updates a project in that workspace |
+| Telegram bot | Collects forms and replies, delivers invitations and exports, provides native management | The same records used by the dashboard |
+| Web dashboard | Filters cases and manages reviews, teams, programs, tasks and exports | Shared application operations and permission checks |
+| Bot and web services | Run independently on the VPS | One persistent SQLite database and durable delivery queues |
+
+General and Raise are separate review branches. Every branch keeps its original source admin even after reassignment. Team membership doesn't expose someone's personal workspace. The earlier fundraising website is separate and isn't automatically synchronized.
 
 ## Repository contents and downloads
 
-This repository contains the complete English 2.1.1 release. The ZIP filenames retain `v2`; the application version inside is `2.1.1`.
+This repository contains version `2.1.2`. Download filenames retain `v2` for continuity. Source and operations ZIPs, the offline guide and test report are rebuilt together.
 
 | Resource | Contents |
 | --- | --- |
@@ -13,9 +34,9 @@ This repository contains the complete English 2.1.1 release. The ZIP filenames r
 | [Architecture](docs/ARCHITECTURE.md) | Data model, permissions, queues, exports and failure boundaries |
 | [VPS installation](extensions/DEPLOY.md) | Configuration, independent services, HTTPS, backups and acceptance |
 | [Operations and updates](extensions/UPDATES.md) | Implemented operations, known limits and future work |
-| [Release notes](docs/RELEASE.md) | English-only changes and verified release evidence |
+| [Release notes](docs/RELEASE.md) | Changes, compatibility and verification scope |
 | [Complete source ZIP](https://github.com/sobix13/FUTARCHIST/blob/main/downloads/FUTARCHIST_v2.zip) | Source, assets, requirements, documentation and tests |
-| [Standalone user guide](docs/USER_GUIDE.html) | The full English guide with embedded styles and logos |
+| [Standalone user guide](docs/USER_GUIDE.html) | Offline guide with embedded styles and logos |
 | [Standalone test report](reports/test-report.html) | Recorded tests, results and pending acceptance checks |
 | [Operations ZIP](https://github.com/sobix13/FUTARCHIST/blob/main/downloads/FUTARCHIST_Operations_v2.zip) | Installation and maintenance documents and scripts |
 | [Download checksums](https://github.com/sobix13/FUTARCHIST/blob/main/downloads/FUTARCHIST_Checksums.json) | SHA-256 checksums of the four download files |
@@ -73,15 +94,13 @@ The admin shares a code or intake link with a project representative. `/activate
 
 General review and raise review use separate case branches. Each records its source admin ID and name, current assignee, status and history. Reassignment preserves the original source. Submissions in different workspaces are not merged automatically.
 
-## English-only interface
+## Guides and screen flow
 
 Open **Guide** on the Telegram home screen or any native management screen, or send `/guide`. It explains submissions, replies, workspaces, codes, cases, filters, programs, tasks, invitations, exports, admin permissions, bot text, health and browser access. Sections follow the user's role. Opening the guide preserves saved guest forms and the active admin step. `/help` and `/guide` are registered in the command menu by `--configure-bot`. The native guide works without HTTPS or a running browser service.
 
 The web Overview maps four steps: select a workspace, collect information, review cases and plan the next action. Navigation groups follow that workflow. Every section includes **How to use**, numbered steps, the next action and a link to the matching full-guide section. Access codes uses the same label in Telegram and the dashboard. Once HTTPS is configured, **Open dashboard** is the primary admin home action. Telegram management remains the fallback.
 
-Bot messages, guest forms, inline buttons, native admin screens, web dashboards, validation errors, demo content, guides and documentation use English. There is no language selector. Dashboard text flows left to right, with English date and number formatting.
-
-Custom questions, the welcome message, help and invitation template remain editable by superadmins. Previously stored built-in defaults are converted during startup. User-entered records, names and custom copy are preserved as entered. Form drafts retain their answers. The update does not translate private records or rewrite previously delivered messages.
+Superadmins can edit question wording, the welcome message, help and invitation template under Bot text. Field types and conditional rules stay fixed. Editing copy doesn't rewrite submitted records, saved answers or previously delivered messages.
 
 The complete guide is `ownership/static/guide.html`. Technical architecture is in `docs/ARCHITECTURE.md`. VPS installation is in `extensions/DEPLOY.md`. Operations and future work are described in `extensions/UPDATES.md`.
 
@@ -121,14 +140,14 @@ The release check extracts the distributable into an empty directory and runs al
 | `futarchist/__main__.py` | Public product entry point |
 | `ownership/core.py`, `schema.sql` | Permissions, transactions, storage and schema migration |
 | `ownership/english.py` | Conversion of legacy built-in defaults without changing user records |
-| `ownership/forms.py`, `bot.py` | English guest forms, editing, replies and group connections |
+| `ownership/forms.py`, `bot.py` | Guest forms, editing, replies and group connections |
 | `ownership/native.py` | Native Telegram management using inline buttons and short forms |
 | `ownership/management.py` | Shared operations for web and Telegram |
 | `ownership/exports.py` | Permission-aware XLSX, CSV and multi-dataset ZIP |
 | `ownership/telegram.py` | Bot API transport, inbox, outbox, retries and isolated workers |
 | `ownership/health.py` | Health, incidents, bounded recovery and consistent backups |
 | `ownership/server.py`, `static/` | Login, HTTP API, browser dashboard and local simulator |
-| `tests/`, `tools/` | Regression, language checks, reports and safe packaging |
+| `tests/`, `tools/` | Regression checks, reports and verified packaging |
 
 The internal package name `ownership` remains for compatibility. The public product and command are FUTARCHIST. The supplied logos are used without image modifications.
 
