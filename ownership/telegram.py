@@ -80,7 +80,7 @@ class Engine:
                 m=update.get('message')
                 if m and m.get('chat',{}).get('type')!='private':
                     text=m.get('text','')
-                    keep=bool(m.get('migrate_to_chat_id') or text.startswith(('/bind ','/bind@','/help','/start')))
+                    keep=bool(m.get('migrate_to_chat_id') or text.startswith(('/bind ','/bind@','/help','/guide','/start')))
                     command=text.partition(' ')[0]
                     if '@' in command and command.split('@',1)[1].lower()!=self.bot.name.lower():keep=False
                 if keep:

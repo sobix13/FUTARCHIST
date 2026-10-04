@@ -40,15 +40,43 @@ class Bot:
     def home(self,uid):
         f=self.flow(uid)
         text=self.management.text('welcome')
+        role=self.s.actor(uid)['role']
+        if role in ('owner','admin'):
+            from .management import TEXT_DEFAULTS
+            if text==TEXT_DEFAULTS['welcome']:
+                text='FUTARCHIST\nYour admin access is active. Open your workspace to collect information, review cases and plan follow-ups.'
+            if not self.app_url.startswith('https://'):text+='\nThe browser dashboard is not connected yet. Manage in Telegram remains available.'
         rows=[]
         if f: rows.append([{'text':'Resume draft','callback_data':'resume'}])
         if not self.s.gated or self.s.guest_routes(uid):rows += [[{'text':'Submit information','callback_data':'new'}]]
         rows.append([{'text':'My projects','callback_data':'projects'}])
-        if self.s.actor(uid)['role'] in ('owner','admin'):
+        if role in ('owner','admin'):
+            if self.app_url.startswith('https://'):rows.append([{'text':'Open dashboard','web_app':{'url':self.app_url}}])
             rows.append([{'text':'Manage in Telegram','callback_data':'admin'}])
-            if self.app_url.startswith('https://'):rows.append([{'text':'Admin panel','web_app':{'url':self.app_url}}])
+            if not self.app_url.startswith('https://'):rows.append([{'text':'Dashboard setup','callback_data':'guide:browser'}])
+        rows.append([{'text':'Guide','callback_data':'guide'}])
         rows.append([{'text':'Support','callback_data':'support'}])
         self.send(uid,text+'\n\nBuilt by Ownership',rows)
+
+    def guide(self,uid,section=None):
+        from .guide import visible_sections
+        role=self.s.actor(uid)['role'];sections=visible_sections(role)
+        navigation=[]
+        if self.flow(uid):navigation.append([{'text':'Resume form','callback_data':'resume'}])
+        if role in ('owner','admin'):
+            if self.native.flow(uid).get('form'):
+                navigation.append([{'text':'Resume admin step','callback_data':'guide:resume_admin'}])
+            else:navigation.append([{'text':'Back to management','callback_data':'admin'}])
+        navigation.append([{'text':'Back to home','callback_data':'guide:home'}])
+        if section:
+            topic=next((item for item in sections if item[0]==section),None)
+            if topic is None:
+                self.send(uid,'This guide section is unavailable for your account. Open /guide for available sections.');return
+            _,title,text=topic
+            self.send(uid,'FUTARCHIST Guide\n'+title+'\n\n'+text,[[{'text':'All guide sections','callback_data':'guide'}]]+navigation);return
+        buttons=[{'text':title,'callback_data':'guide:'+key} for key,title,_ in sections]
+        rows=[buttons[i:i+2] for i in range(0,len(buttons),2)]
+        self.send(uid,'FUTARCHIST Guide\nChoose a section. This guide works inside Telegram without the browser dashboard.\nYour saved forms and current admin step stay unchanged.\n\nBuilt by Ownership',rows+navigation)
 
     def start(self,uid,token):
         route=self.s.activate(uid,token) if self.s.gated else self.s.active_route(token)
@@ -147,17 +175,20 @@ class Bot:
                 bare,address=command.split('@',1)
                 if address.lower()!=self.name.lower(): return
                 text=bare+(sep+rest if sep else '')
-        if chat['type']!='private' and not (text.startswith(('/bind ','/start','/help'))): return
+        if chat['type']!='private' and not (text.startswith(('/bind ','/start','/help','/guide'))): return
         self.s.register(uid,msg['from'].get('first_name','User'),chat['type']=='private')
         self.s.actor(uid)
         if chat['type']!='private':
             if text.startswith('/bind '): self.bind(uid,chat,text.split(' ',1)[1],verified_group_admin)
-            elif text.startswith('/start') or text.startswith('/help'):
+            elif text.startswith(('/start','/help','/guide')):
                 self.send(chat['id'],'Submit project and raise information in a private chat with this bot.',[[{'text':'Open bot','url':f'https://t.me/{self.name}'}]])
             return
         if text.startswith('/activate '):self.start(uid,text.partition(' ')[2].strip());return
         if text in ('/support','/about'):
             self.support(uid);return
+        if text in ('/help','/guide'):
+            if text=='/help':self.send(uid,self.management.text('help'))
+            self.guide(uid);return
         if self.native.message(uid,text):return
         if text.startswith('/start'):
             arg=text.split(' ',1)[1].strip() if ' ' in text else ''
@@ -222,6 +253,16 @@ class Bot:
         self.s.queue('answerCallbackQuery',{'callback_query_id':cb['id']})
         if chat.get('type')!='private': return
         if data=='support':self.support(uid);return
+        if data=='guide':self.guide(uid);return
+        if data.startswith('guide:'):
+            topic=data[6:]
+            if topic=='home':self.home(uid)
+            elif topic=='resume_admin':
+                self.native.actor(uid)
+                if self.native.flow(uid).get('form'):self.native.prompt(uid)
+                else:self.native.open(uid)
+            else:self.guide(uid,topic)
+            return
         if data=='admin' or data.startswith('a:'):
             self.native.callback(uid,data,cb);return
         if data.startswith('rsvp:'):

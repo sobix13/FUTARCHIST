@@ -28,6 +28,7 @@ class NativeAdmin:
     def screen(self,uid,text,rows,f=None):
         f=self.flow(uid) if f is None else f;f['nonce']=secrets.token_hex(4);self.save(uid,f)
         buttons=[[{'text':title,'callback_data':'a:'+f['nonce']+':'+action} for title,action in row] for row in rows]
+        buttons.append([{'text':'Guide','callback_data':'guide'}])
         self.bot.send(uid,text,buttons)
 
     def actor(self,uid):
@@ -55,7 +56,7 @@ class NativeAdmin:
         for perm,title,action in [('routes','Access codes','routes'),('send','Invitations','campaigns'),('export','Export Excel / CSV','exports')]:
             if perm in space['permissions']:rows.append([(title,action)])
         if self.s.actor(uid)['role']=='owner':rows += [[('Admins','admins'),('Create team','newteam')],[('Membership and permissions','membership'),('Bot text','texts')],[('Manage workspaces','workspaces'),('Health and troubleshooting','health')]]
-        if self.bot.app_url.startswith('https://'):rows.append([('Browser login link','panel')])
+        if self.bot.app_url.startswith('https://'):rows.insert(0,[('Open dashboard','panel')])
         self.screen(uid,text+'\n\nBuilt by Ownership',rows,f)
 
     def message(self,uid,text):

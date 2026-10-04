@@ -124,7 +124,7 @@ class Handler(BaseHTTPRequestHandler):
                 allowed={'metadao-wordmark.jpeg':'image/jpeg','metadao.png':'image/png','futardio.png':'image/png','ownership.jpeg':'image/jpeg'}
                 if asset not in allowed:raise AppError('File not found.',404)
                 self.send_data((STATIC/'assets'/asset).read_bytes(),content_type=allowed[asset]);return
-            if not mutating and path in ('/','/emulator','/guide','/app.js','/operations.js','/style.css','/emulator.js'):
+            if not mutating and path in ('/','/emulator','/guide','/app.js','/operations.js','/style.css','/guidance.css','/emulator.js'):
                 if path=='/emulator' and not self.server.demo: raise AppError('The simulator is available only in demo mode.',404)
                 name={'/':'index.html','/emulator':'emulator.html','/guide':'guide.html'}.get(path,path.lstrip('/'))
                 file=STATIC/name

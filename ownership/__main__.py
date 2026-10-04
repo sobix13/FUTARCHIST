@@ -50,7 +50,7 @@ def demo_seed(s):
         s.db.execute("INSERT INTO settings VALUES('demo_seeded','1')")
 
 def configure_bot(client,owners):
-    base=[{'command':c,'description':d} for c,d in [('start','Start and enter your access code'),('activate','Activate your contact\'s access code'),('projects','My projects and updates'),('resume','Resume a saved form'),('support','Support'),('id','Telegram ID'),('stop','Stop DM invitations')]]
+    base=[{'command':c,'description':d} for c,d in [('start','Start and enter your access code'),('guide','Guide to every section'),('help','Commands and getting started'),('activate','Activate your contact\'s access code'),('projects','My projects and updates'),('resume','Resume a saved form'),('support','Support'),('id','Telegram ID'),('stop','Stop DM invitations')]]
     admin=[{'command':c,'description':d} for c,d in [('manage','Manage in Telegram'),('panel','Browser dashboard'),('code','Access codes'),('export','Export Excel and CSV'),('health','Health and troubleshooting'),('repair','Safe recovery')]]
     client.call('setMyCommands',{'commands':base})
     client.call('setMyName',{'name':'FUTARCHIST'})
