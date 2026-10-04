@@ -1,22 +1,22 @@
 [
   {
     "file": "FUTARCHIST_v2.zip",
-    "bytes": 365444,
-    "sha256": "9c25112321e5305c51a861d12230d45e08493b0218257a64385c1da1a5dfc645"
+    "bytes": 889434,
+    "sha256": "e13e85eac0378ed21af2c0436ac9441b1f6a14cdfaad3cb1cf621f321b8ef5ed"
   },
   {
     "file": "FUTARCHIST_Guide.html",
-    "bytes": 98845,
-    "sha256": "a3018496d3ca9efb5e8e3e7ed0c555b6e8500871198e0b0069ece75b0ff78bcb"
+    "bytes": 467076,
+    "sha256": "ce81d2fcd313a6feee66b32f5d0e5d44d9df9fc63b914791e9cc0b3652c503a5"
   },
   {
     "file": "FUTARCHIST_Test_Report.html",
-    "bytes": 39120,
-    "sha256": "a3aeffb16f2e3af5d053d21ec53db2b50bbbace53d3e078931abdb776b612aac"
+    "bytes": 41325,
+    "sha256": "fe2884aea962e6211d6f520eb5469af4226c7524ee7aa9f7656a3f37eaaa5d22"
   },
   {
     "file": "FUTARCHIST_Operations_v2.zip",
-    "bytes": 90780,
-    "sha256": "75e2f7e86b6d0cfbe7e7e8df2dba031ad0e08510c615e5d3737520caede84285"
+    "bytes": 354771,
+    "sha256": "f0aad6d1978787839494ad5e1266a6347d77ad83046cc74c88b14dc5ac7b5d1f"
   }
 ]
