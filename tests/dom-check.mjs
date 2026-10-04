@@ -30,6 +30,8 @@ try{
  }});
  const w=dom.window,d=w.document,$=s=>d.querySelector(s);
  assert.equal(d.documentElement.lang,'en');assert.equal(d.documentElement.dir,'ltr');record('English-only interface and left-to-right document');
+ assert.equal(d.querySelectorAll('.identity-banner').length,2);assert.equal($('#login .identity-banner').getAttribute('src'),'/assets/futarchist-banner.jpeg');assert.equal($('.topbar .brand-picture img').getAttribute('src'),'/assets/futarchist-logo.jpeg');record('Original FUTARCHIST banner and logo render in login and dashboard image slots');
+ assert.ok(d.querySelector('link[href="/branding.css"]'));assert.ok(d.querySelector('.footer img[src="/assets/ownership.jpeg"]'));record('Image-only stylesheet is separate and Ownership credit is preserved');
  const click=async selector=>{await until(()=>$(selector)&&!$(selector).disabled,'Control absent or busy: '+selector);$(selector).click();await pause(80);};
  const submit=async selector=>{$(selector).dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));await pause(80);};
  const set=(selector,value)=>{assert.ok($(selector),'Missing input '+selector);$(selector).value=value;};

@@ -7,6 +7,8 @@
 <title>FUTARCHIST | Teams, projects and programs</title>
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="/guidance.css">
+<link rel="stylesheet" href="/branding.css">
+<link rel="icon" type="image/jpeg" href="/assets/futarchist-logo.jpeg">
 <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
 <script src="/operations.js" defer></script>
 <script src="/app.js" defer></script>
@@ -15,7 +17,8 @@
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 <div id="connection" class="connection" role="status" hidden>Dashboard connection lost. <button data-action="refresh">Try again</button><a id="native-link" href="https://t.me/FutarchistBot" target="_blank" rel="noopener">Manage in Telegram</a></div>
 <main id="login" class="login">
-<div class="brand-lockup"><img src="/assets/futardio.png" alt="Futardio" width="52" height="52"><div class="brand">FUTARCHIST<span>Team &amp; project management</span></div></div>
+<img class="identity-banner" src="/assets/futarchist-banner.jpeg" alt="FUTARCHIST" width="1536" height="512">
+<div class="brand-lockup"><span class="brand-picture"><img src="/assets/futarchist-logo.jpeg" alt="FUTARCHIST" width="802" height="549"></span><div class="brand">FUTARCHIST<span>Team &amp; project management</span></div></div>
 <h1>Your projects, programs<br>and follow-ups in one workspace</h1>
 <p>Open the dashboard from the bot. For browser access, send <bdi>/panel</bdi> in Telegram and use your personal login link.</p>
 <div class="login-points"><span>Personal and team workspaces</span><span>Private access codes</span><span>Clear assignments and history</span></div>
@@ -30,10 +33,11 @@
 <div id="shell" hidden>
 <div id="demo-banner" class="demo-banner" hidden>Local demo <a href="/emulator" target="_blank" rel="noopener">Telegram simulator</a></div>
 <header class="topbar">
-<div class="brand-lockup"><img src="/assets/futardio.png" alt="Futardio" width="40" height="40"><div class="brand">FUTARCHIST<span>Teams · Projects · Programs</span></div></div>
+<div class="brand-lockup"><span class="brand-picture"><img src="/assets/futarchist-logo.jpeg" alt="FUTARCHIST" width="802" height="549"></span><div class="brand">FUTARCHIST<span>Teams · Projects · Programs</span></div></div>
 <label class="workspace-label">Workspace<select id="workspace" aria-label="Select workspace"></select></label>
 <div class="user"><span id="user-name"></span><button id="logout" class="quiet">Log out</button></div>
 </header>
+<img class="identity-banner" src="/assets/futarchist-banner.jpeg" alt="FUTARCHIST" width="1536" height="512">
 <div class="layout"><nav id="nav" aria-label="Dashboard sections"></nav><main class="content"><div id="page-head" class="page-head"></div><section id="page-help" aria-label="Guide for this section"></section><section id="view" aria-live="polite"></section></main></div>
 </div>
 <dialog id="detail" class="detail" aria-label="Details and actions"><div id="detail-content"></div></dialog>
